@@ -1,0 +1,61 @@
+{
+    "name": "faisal50x/query-filter",
+    "description": "Laravel Automated Query filter.",
+    "keywords": [
+        "faisal50x",
+        "query-filter",
+        "laravel"
+    ],
+    "homepage": "https://github.com/faisal50x/query-filter",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Faisal Ahmed",
+            "email": "hello@imfaisal.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Faisal50x\\QueryFilter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "database/migrations",
+            "QueryFilter",
+            "Models"
+        ],
+        "psr-4": {
+            "Faisal50x\\QueryFilter\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Faisal50x\\QueryFilter\\QueryFilterServiceProvider"
+            ],
+            "aliases": {
+                "QueryFilter": "Faisal50x\\QueryFilter\\QueryFilterFacade"
+            }
+        }
+    }
+}
