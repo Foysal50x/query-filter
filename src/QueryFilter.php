@@ -91,10 +91,10 @@ abstract class QueryFilter
         foreach ($this->query() as $name => $value) {
             if (
                 method_exists($this, Str::camel($name))
-                && !in_array(Str::camel($name), $this->skipToCall(), true)
+                && !in_array(Str::camel($name), $this->skipToCall())
             ) {
                 $this->appends[$name] = $value;
-                $params = is_array($value) ?? explode(',', $value);
+                $params = is_array($value) ? $value : explode(',', $value);
                 $params = Arr::wrap($params);
                 array_unshift($params, $this->builder);
                 call_user_func_array(
