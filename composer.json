@@ -31,11 +31,6 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "database/migrations",
-            "QueryFilter",
-            "Models"
-        ],
         "psr-4": {
             "Faisal50x\\QueryFilter\\Tests\\": "tests"
         }
@@ -43,7 +38,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
@@ -52,10 +46,7 @@
         "laravel": {
             "providers": [
                 "Faisal50x\\QueryFilter\\QueryFilterServiceProvider"
-            ],
-            "aliases": {
-                "QueryFilter": "Faisal50x\\QueryFilter\\QueryFilterFacade"
-            }
+            ]
         }
     }
 }

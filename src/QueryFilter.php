@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueryFilter
  * php version 7.1
@@ -9,14 +10,15 @@
  * @license  http://license.imfaisal.me/public Public
  * @link     http://imfaisal.me/ Faisal Ahmed
  */
+
 namespace Faisal50x\QueryFilter;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
+use Throwable;
+use ReflectionMethod;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use ReflectionMethod;
-use Throwable;
+use Illuminate\Http\Request;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Abstract QueryFilter class
@@ -87,17 +89,18 @@ abstract class QueryFilter
         $this->callDefaultFn();
 
         foreach ($this->query() as $name => $value) {
-            if (method_exists($this, Str::camel($name))
+            if (
+                method_exists($this, Str::camel($name))
                 && !in_array(Str::camel($name), $this->skipToCall(), true)
             ) {
                 $this->appends[$name] = $value;
-                $params = is_array($value)?? explode(',', $value);
+                $params = is_array($value) ?? explode(',', $value);
                 $params = Arr::wrap($params);
                 array_unshift($params, $this->builder);
                 call_user_func_array(
-                  [$this, Str::camel($name)],
-                  $params
-                  //array_filter($params)
+                    [$this, Str::camel($name)],
+                    $params
+                    //array_filter($params)
                 );
             }
         }
@@ -114,14 +117,15 @@ abstract class QueryFilter
         foreach (get_class_methods($this) as $method) {
             try {
                 $that = new ReflectionMethod($this, $method);
-            }catch (Throwable $exception) {
+            } catch (Throwable $exception) {
                 break;
             }
-            if($that->isProtected()
+            if (
+                $that->isProtected()
                 && !in_array($method, $this->query())
                 && !in_array($method, $this->skipToCall())
             ) {
-                $this->{$method}();
+                $this->{$method}($this->builder);
             }
         }
     }
@@ -129,7 +133,7 @@ abstract class QueryFilter
     private function skipToCall(): array
     {
         return array_merge(
-            $this->deferedMethods,
+            $this->reservedMethods,
             $this->deferedMethods
         );
     }
