@@ -35,7 +35,7 @@ abstract class QueryFilter
     /**
      * Eloquent Builder instance
      *
-     * @var Builder  $builder
+     * @var $builder
      */
     private $builder;
 
@@ -77,7 +77,7 @@ abstract class QueryFilter
         return $this->request->query();
     }
 
-    public function apply(Builder $builder)
+    public function apply($builder)
     {
         //Reset appended query string
         $this->appends = [];
@@ -107,7 +107,7 @@ abstract class QueryFilter
         return $this->builder;
     }
 
-    public function setBuilder(Builder $builder)
+    public function setBuilder($builder)
     {
         $this->builder = $builder;
     }
