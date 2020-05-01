@@ -2,7 +2,8 @@
 
 namespace Faisal50x\QueryFilter\Queries;
 
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder as QBuilder;
 
 class FilterPaginate
 {
@@ -11,7 +12,10 @@ class FilterPaginate
 
     protected $arguments;
 
-    public function __construct(Builder $builder, ...$args)
+    /**
+     * @var Builder|QBuilder $builder
+     */
+    public function __construct($builder, ...$args)
     {
         $this->builder = $builder;
         $this->arguments = $args;

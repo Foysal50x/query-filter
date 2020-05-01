@@ -18,7 +18,6 @@ use ReflectionMethod;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Database\Query\Builder;
 
 /**
  * Abstract QueryFilter class

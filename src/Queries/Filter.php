@@ -3,12 +3,13 @@
 namespace Faisal50x\QueryFilter\Queries;
 
 use Faisal50x\QueryFilter\QueryFilter;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Builder as QBuilder;
+use Illuminate\Database\Eloquent\Builder as EBuilder;
 
 class Filter
 {
     /**
-     * @var \Illuminate\Database\Query\Builder $builder
+     * @var EBuilder|QBuilder $builder
      */
     protected $builder;
 
@@ -17,7 +18,10 @@ class Filter
      */
     protected $filter;
 
-    public function __construct(Builder $builder, QueryFilter $filter)
+    /**
+     * @param EBuilder|QBuilder $builder
+     */
+    public function __construct($builder, QueryFilter $filter)
     {
         $this->builder = $builder;
         $this->filter = $filter;
