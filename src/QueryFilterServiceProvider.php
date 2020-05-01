@@ -17,7 +17,7 @@ class QueryFilterServiceProvider extends ServiceProvider
     public function boot()
     {
         EloquentBuilder::macro('filter', function (QueryFilter $filter) {
-            return (new Filter($this->query, $filter))();
+            return (new Filter($this, $filter))();
         });
 
         DatabaseBuilder::macro('filter', function (QueryFilter $filter) {
