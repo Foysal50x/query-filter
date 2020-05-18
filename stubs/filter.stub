@@ -1,0 +1,8 @@
+/**
+     * Filter records based on the query parameter "dummyQueryParameter"
+     * 
+     */
+    public function dummyFilter($query, dummyParameter)
+    {
+        // $query
+    }

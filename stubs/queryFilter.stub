@@ -1,0 +1,12 @@
+<?php
+
+namespace DummyNamespace;
+
+use Faisal50x\QueryFilter\QueryFilter;
+
+/**
+ * Filter records based on query parameters.
+ *
+ */
+class DummyClass extends QueryFilter
+{DummyFilters}

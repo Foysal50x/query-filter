@@ -1,10 +1,13 @@
 {
     "name": "faisal50x/query-filter",
-    "description": "Laravel Automated Query filter.",
+    "description": "Laravel Eloquent models filter based on query parameters.",
     "keywords": [
         "faisal50x",
         "query-filter",
-        "laravel"
+        "laravel",
+        "query",
+        "filters",
+        "eloquent"
     ],
     "homepage": "https://github.com/faisal50x/query-filter",
     "license": "MIT",
@@ -13,12 +16,15 @@
         {
             "name": "Faisal Ahmed",
             "email": "hello@imfaisal.me",
+            "homepage": "https://github.com/Faisal50x",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^7.1|^7.2",
-        "illuminate/support": "^5.6|^6.8|^7.2"
+        "illuminate/console": "^5.6|^6.0|^7.0",
+        "illuminate/support": "^5.6|^6.0|^7.0",
+        "illuminate/database": "^5.6|^6.0|^7.0"
     },
     "require-dev": {
         "orchestra/testbench": "^4.0",

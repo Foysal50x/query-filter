@@ -121,7 +121,7 @@ abstract class QueryFilter
             }
             if (
                 $that->isProtected()
-                && !in_array($method, $this->query())
+                && !in_array(Str::snake($method), $this->query())
                 && !in_array($method, $this->skipToCall())
             ) {
                 $this->{$method}($this->builder);
